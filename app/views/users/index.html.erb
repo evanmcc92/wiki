@@ -1,10 +1,8 @@
-<%= render "shared/header" %>
-<%= render "shared/left" %>
-<div id="body">
 <h1>All Users</h1>
+  <% @users.each do |user| %>
+	<h3><%= link_to user.username, user_path(user) %></h3>
 <ul>
-<li><%= @user.username %></li>
-<li>admin status</li>
-<li>pages made count</li>
+	<li>admin status</li>
+	<li>pages made count</li>
 </ul>
-</div>
+<% end %>

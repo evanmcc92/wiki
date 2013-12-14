@@ -7,13 +7,8 @@ Wiki::Application.routes.draw do
 
 
   resources :users
-  resources :sessions, only: [:create, :destroy]
   
   root "static_pages#index"
-  
-  #Sessions Users
-  get "logout_user" => "sessions#destroy", :as => "logout_user"
-  post "login_user" => "sessions#create", :as => "login_user"
   
   #Users
   get "signup" => "users#new", :as => "signup"
