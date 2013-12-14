@@ -11,7 +11,6 @@
  *= require_self
  *= require bootstrap.min
  *= require bootstrap
- *= require bootstrap.min
  *= require bootstrap-theme.min
  *= require bootstrap-theme
  *= require_tree .
@@ -24,4 +23,20 @@
        url('../assets/glyphicons-halflings-regular.woff') format('woff'), 
        url('../assets/glyphicons-halflings-regular.ttf') format('truetype'), 
        url('../assets/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+}
+.tab-pane {
+  border-bottom: 1px solid #dddddd;
+  border-left: 1px solid #dddddd;
+  border-right: 1px solid #dddddd;
+  padding: 10px;
+}
+#body {
+	float: right;
+	width: 74%;
+	margin-right: 5px;
+}
+#left {
+	float:left;
+	width: 24%;
+	margin-left: 5px;
 }
