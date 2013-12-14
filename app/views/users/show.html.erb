@@ -1,2 +1,10 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<%= render "shared/header" %>
+<%= render "shared/left" %>
+<div id="body">
+<h1><%= @user.username %></h1>
+<p>Admin Status: Y or N</p>
+<p>Pages Made</p>
+<ul id="pagesmade">
+	<li>Page name with url</li>
+</ul>
+</div>

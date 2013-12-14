@@ -1,2 +1,10 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<%= render "shared/header" %>
+<%= render "shared/left" %>
+<div id="body">
+<h1>All Users</h1>
+<ul>
+<li><%= @user.username %></li>
+<li>admin status</li>
+<li>pages made count</li>
+</ul>
+</div>
