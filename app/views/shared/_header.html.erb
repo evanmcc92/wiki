@@ -6,12 +6,12 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">Wiki</a>
+        <%= link_to "Wiki", root_path, {:class => "navbar-brand"} %>
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav pull-right">
-            <li><%= link_to "Login", "#"%></li>
-            <li><%= link_to "Signup", "#"%></li>
+            <li><%= link_to "Login", login_user_path %></li>
+            <li><%= link_to "Signup", signup_path %></li>
         </ul>
     </div>
 </nav>

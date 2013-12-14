@@ -3,11 +3,15 @@
 one:
   username: MyString
   email: MyString
-  password_digest: MyString
+  password_hash: MyString
+  password_salt: MyString
+  remember_token: MyString
   admin: false
 
 two:
   username: MyString
   email: MyString
-  password_digest: MyString
+  password_hash: MyString
+  password_salt: MyString
+  remember_token: MyString
   admin: false

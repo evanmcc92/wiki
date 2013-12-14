@@ -1,0 +1,36 @@
+<%= render "shared/header" %>
+<%= render "shared/left" %>
+<div id="body">
+        <h1>Update Your Profile</h1>
+        <% if flash[:success] %>
+            <div id="success">
+                    <h3><%= flash[:success] %></h3>
+            </div>
+        <% end %>
+        <% if @user.errors.any? %>
+      <div id="error_explanation">
+        <h3>Oops! <%= pluralize(@user.errors.count, "Error") %> in Updating Your Account:</h3>
+        <ul>
+            <% @user.errors.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+        </ul>
+      </div>
+    <% end %>
+        <%= form_for(@user) do |f| %>
+            <p><%= f.label :username%>
+            <%= f.text_field :username %></p>
+
+            <p><%= f.label :email %>
+            <%= f.text_field :email %></p>
+
+            <p><%= f.label :password, "*Password" %>
+            <%= f.password_field :password %></p>
+
+            <p><%= f.label :password_confirmation, "*Confirmation" %>
+            <%= f.password_field :password_confirmation %><br /></p>
+
+            <p><%= f.submit "Save Changes", class: "btn btn-large btn-primary" %></p>
+    <% end %>
+    <%= button_to 'Delete My Account', user_path(current_user), method: :delete, data: { confirm: 'Are you sure you want to delete your account?' }, class: "btn btn-large" %>
+</div>

@@ -1,5 +1,24 @@
 Wiki::Application.routes.draw do
+  get "users/show"
+  get "users/create"
+  get "users/destroy"
+  get "users/index"
+  get "users/new"
+
+
+  resources :users
+  resources :sessions, only: [:create, :destroy]
+  
   root "static_pages#index"
+  
+  #Sessions Users
+  get "logout_user" => "sessions#destroy", :as => "logout_user"
+  post "login_user" => "sessions#create", :as => "login_user"
+  
+  #Users
+  get "signup" => "users#new", :as => "signup"
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
