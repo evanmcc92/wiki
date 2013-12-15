@@ -9,8 +9,9 @@ class User < ActiveRecord::Base
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
 
   #make password secure
-  include BCrypt
   attr_accessor :password
+  before_save :encrypt_password
+
   attr_accessible :email, :password, :password_confirmation, :username
 
   #validations
@@ -21,6 +22,22 @@ class User < ActiveRecord::Base
 
 
   before_create :create_remember_token
+
+  def self.authenticate(email, password)
+    user = find_by_email(email)
+    if user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)
+      user
+    else
+      nil
+    end
+  end
+
+  def encrypt_password
+    if password.present?
+      self.password_salt = BCrypt::Engine.generate_salt
+      self.password_hash = BCrypt::Engine.hash_secret(password, password_salt)
+    end
+  end
 
   def User.new_remember_token
     SecureRandom.urlsafe_base64
