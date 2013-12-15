@@ -10,7 +10,14 @@
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav pull-right">
-            <li><%= link_to "Signup", signup_path %></li>
+            <% if signed_in? %>
+                <li><%= link_to "My Profile", user_path(current_user) %></li>
+                <li>Create Page</li>
+                <li><%= link_to "Logout", signout_path, method: "delete"%></li>
+            <% else %>
+                <li><%= link_to "Signup", signup_path %></li>
+                <li><%= link_to "Login", signin_path %></li>
+            <% end %>
         </ul>
     </div>
 </nav>
