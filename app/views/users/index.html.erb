@@ -3,7 +3,14 @@
 	<h3><%= link_to user.username, user_path(user) %></h3>
 <ul>
 	<li>Admin: <%= user.admin ? 'Yes' : 'No' %></li>
-	
+	<% if signed_in? && current_user.admin %>
+		<li>
+			<%= form_for(user) do |f| %>
+				<%= f.label "Make Admin:" %> <%= f.check_box :admin %>
+				<%= f.submit "Save Changes", class: "btn btn-xs btn-primary" %>
+			<% end %>
+		</li>
+	<% end %>
 	<li>pages made count</li>
 </ul>
 <% end %>

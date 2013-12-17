@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   attr_accessor :password
   before_save :encrypt_password
 
-  attr_accessible :email, :password, :password_confirmation, :username
+  attr_accessible :email, :password, :password_confirmation, :username, :admin
 
   #validations
   validates_presence_of :email,:message=>"Email ID Field cannot be blank", format: { with: VALID_EMAIL_REGEX }

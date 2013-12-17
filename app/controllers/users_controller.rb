@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :signed_in_user, only: [:edit, :update]
   before_action :correct_user, only: [:edit, :update]
+  before_action :admin_user, only: [:edit, :update]
 
   def show
     @user = User.find(params[:id])
@@ -8,6 +9,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.admin = false
     if @user.save
       sign_in @user
       flash[:success] = "Welcome to Wiki!"
@@ -29,7 +31,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.update_attributes(user_update_params)
+    if @user.update_attributes(user_params)
       flash[:success] = "Profile updated"
       redirect_to @user
     else
@@ -51,10 +53,6 @@ class UsersController < ApplicationController
       params.require(:user).permit(:username, :email, :admin, :password)
     end
 
-    def user_update_params
-      params.require(:user).permit(:username, :email, :admin, :password)
-    end
-
     def signed_in_user
       unless signed_in?
         store_location
@@ -65,5 +63,9 @@ class UsersController < ApplicationController
     def correct_user
       @user = User.find(params[:id])
       redirect_to(root_url) unless current_user?(@user)
+    end
+
+    def admin_user
+      redirect_to(root_url) unless current_user.admin?
     end
 end
