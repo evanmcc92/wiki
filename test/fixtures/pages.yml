@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user_id: 
+  trend_id: 
+  title: MyString
+  summary: MyString
+  body: MyString
+
+two:
+  user_id: 
+  trend_id: 
+  title: MyString
+  summary: MyString
+  body: MyString

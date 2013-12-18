@@ -8,11 +8,20 @@
         </button>
         <%= link_to "Wiki", root_path, {:class => "navbar-brand"} %>
     </div>
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" >
         <ul class="nav navbar-nav pull-right">
             <% if signed_in? %>
+                <% if current_user.admin %>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" >Admin<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Create Trend</a></li>
+                        <li><%= link_to "All Users", users_index_path %></li>
+                    </ul>
+                </li>
+                <% end %>
                 <li><%= link_to current_user.username, user_path(current_user) %></li>
-                <li>Create Page</li>
+                <li class="navbar-text">Create Page</li>
                 <li><%= link_to "Logout", signout_path, method: "delete"%></li>
             <% else %>
                 <li><%= link_to "Signup", signup_path %></li>
