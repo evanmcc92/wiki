@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   before_action :signed_in_user, only: [:edit, :update]
-  before_action :correct_user, only: [:edit, :update]
   before_action :admin_user, only: [:edit, :update]
 
   def show
@@ -9,8 +8,14 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    @user.admin = false
+      if @user.id == 1
+        @user.admin = true
+      else
+        @user.admin = false
+      end
+
     if @user.save
+
       sign_in @user
       flash[:success] = "Welcome to Wiki!"
       redirect_to @user
