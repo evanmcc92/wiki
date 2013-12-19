@@ -1,4 +1,7 @@
 Wiki::Application.routes.draw do
+  get "pages/create"
+  get "pages/destroy"
+  get "pages/index"
   get "users/show"
   get "users/create"
   get "users/destroy"
