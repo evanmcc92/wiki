@@ -11,7 +11,7 @@ Wiki::Application.routes.draw do
   end
 
   resources :sessions, only: [:new, :create, :destroy]
-  resources :trends, only: [:create, :destroy]
+  resources :trends, only: [:create, :destroy, :index]
   
   root "static_pages#index"
   

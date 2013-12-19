@@ -13,9 +13,9 @@
             <% if signed_in? %>
                 <% if current_user.admin %>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" >Admin<b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Create Trend</a></li>
+                    <a id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="#">Admin <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                        <li><%= link_to "All Trends", trends_path %></li>
                         <li><%= link_to "All Users", users_index_path %></li>
                     </ul>
                 </li>

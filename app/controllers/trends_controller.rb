@@ -18,6 +18,9 @@ class TrendsController < ApplicationController
 
   def index
     Trend.all
+    @trend = current_user.trends.build
+    @user = User.find_by(params[:id])
+    @trends = @user.trends
   end
 
   private

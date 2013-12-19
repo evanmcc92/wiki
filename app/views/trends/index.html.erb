@@ -1,0 +1,35 @@
+<ul class="nav nav-tabs" id="myTab">
+	<li><%= link_to "Trend", "#trendshow", :data => {:toggle=>"tab"} %></li>
+	<li><%= link_to "New", "#new", :data => {:toggle=>"tab"} %></li>
+</ul>
+<div class="tab-content">
+	<div class="tab-pane" id="trendshow">
+		<h1>All Trends</h1>
+		  <% @trends.each do |trend| %>
+			<h3><%= trend.title %></h3>
+			<p></p>
+		<ul>
+			<li>Page titles</li>
+		</ul>
+		<% end %>
+	</div>
+	<div class="tab-pane" id="new">
+		<h1>Create a New Trend</h1>
+	<% if signed_in? %>
+	    <% if current_user.admin %>
+	    <div class="form-group">
+	      <%= form_for(@trend) do |f| %>
+	        <%= render "shared/error", object: f.object %>
+	        <%= f.text_field :title, placeholder: "Compose new trend..." %>
+	        <%= f.submit "Post", class: "btn btn-xs btn-primary" %>
+	      <% end %>
+	      </div>
+	    <% end %>
+	<% else %>
+	    <p>You need to be signed in or an admin to make a new trend</p>
+	<% end %>
+	</div>
+</div>
+<script>
+   $('#myTab a:first').tab('show') // Select first tab
+</script>
