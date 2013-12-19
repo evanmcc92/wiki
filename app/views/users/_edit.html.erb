@@ -1,19 +1,6 @@
-<% if flash[:success] %>
-    <div id="success">
-            <h3><%= flash[:success] %></h3>
-    </div>
-<% end %>
-<% if @user.errors.any? %>
-    <div id="error_explanation">
-        <h3>Oops! <%= pluralize(@user.errors.count, "Error") %> in Updating Your Account:</h3>
-        <ul>
-            <% @user.errors.each do |msg| %>
-              <li><%= msg %></li>
-            <% end %>
-        </ul>
-    </div>
-<% end %>
 <%= form_for(@user) do |f| %>
+    <%= render "shared/error", object: f.object %>
+
     <p><%= f.label :username %><br/>
     <%= f.text_field :username %></p>
 

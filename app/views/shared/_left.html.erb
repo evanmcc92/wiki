@@ -1,4 +1,5 @@
 <div id="left">
+
   <!-- search -->
   <form class="search" role="search">
     <div class="form-group">
@@ -6,22 +7,40 @@
     </div>
   </form>
   <!-- end of search -->
-  <div class="panel-group" id="accordion">
-    <!-- start of panel 1 -->
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h4 class="panel-title">
-          <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-            Topic #1
-          </a>
-        </h4>
+
+  <!-- trend form -->
+  <% if signed_in? %>
+    <% if current_user.admin %>
+    <div class="form-group">
+      <%= form_for(@trend) do |f| %>
+        <%= render "shared/error", object: f.object %>
+        <%= f.text_field :title, placeholder: "Compose new trend..." %>
+        <%= f.submit "Post", class: "btn btn-xs btn-primary" %>
+      <% end %>
       </div>
-      <div id="collapseOne" class="panel-collapse collapse in">
-        <div class="panel-body">
-        List of a few topics
+    <% end %>
+  <% end %>
+  <!-- end of trend form -->
+
+  <div class="panel-group" id="accordion">
+  <% @trends.each do |trend| %>
+    <!-- start of panel 1 -->
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+              <%= trend.title %>
+            </a>
+          </h4>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse in">
+          <div class="panel-body">
+          List of a few topics
+          </div>
         </div>
       </div>
-    </div>
     <!-- end of panel 1 -->
+  <% end %>
   </div>
+
 </div>

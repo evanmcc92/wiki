@@ -1,0 +1,4 @@
+<%= form_for(@trend) do |f| %>
+  <%= f.text_area :title, placeholder: "Compose new trend..." %>
+  <%= f.submit "Post", class: "btn btn-large btn-primary" %>
+<% end %>

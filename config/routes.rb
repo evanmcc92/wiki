@@ -6,8 +6,12 @@ Wiki::Application.routes.draw do
   get "users/new"
 
 
-  resources :users
+  resources :users do
+    resources :trends
+  end
+
   resources :sessions, only: [:new, :create, :destroy]
+  resources :trends, only: [:create, :destroy]
   
   root "static_pages#index"
   
