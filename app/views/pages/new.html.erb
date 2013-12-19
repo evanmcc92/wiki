@@ -1,0 +1,12 @@
+<ul class="nav nav-tabs" id="myTab">
+	<li><%= link_to "New Page", "#newpage", :data => {:toggle=>"tab"} %></li>
+</ul>
+<div class="tab-content">
+	<div class="tab-pane" id="newpage">
+		<h1>New Page</h1>
+		<%= render "pages/form" %>
+	</div>
+</div>
+<script>
+   	$('#myTab a:first').tab('show') // Select first tab
+</script>

@@ -35,7 +35,15 @@
           </div>
           <div id="collapseOne" class="panel-collapse collapse in">
             <div class="panel-body">
-            List of a few pages
+            <% if trend.pages %>
+              <% trend.pages.each do |page| %>
+                <ul>
+                  <li><%= link_to page.title, page_path(page) %></li>
+                </ul>
+              <%end%>
+            <%else%>
+              <p>No pages made</p>
+            <%end%>
             </div>
           </div>
         </div>

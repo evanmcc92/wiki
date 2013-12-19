@@ -1,0 +1,26 @@
+<ul class="nav nav-tabs" id="myTab">
+	<li><%= link_to "Page", "#page", :data => {:toggle=>"tab"} %></li>
+	<li><%= link_to "Update Page", "#updatepage", :data => {:toggle=>"tab"} %></li>
+</ul>
+<div class="tab-content">
+	<div class="tab-pane" id="page">
+		<h1><%= @page.title %></h1>
+		<blockquote><i><%= @page.summary %></i></blockquote>
+		<p>
+			<small>Created by: <%= @page.user.username %>, Last Updated: <%= @page.updated_at.strftime('%H:%M:%S, %m/%d/%Y ') %></small>
+		</p>
+		<p><%= @page.trend %></p>
+		<p><%= @page.body %></p>
+	</div>
+	<div class="tab-pane" id="updatepage">
+		<h1>Update Page</h1>
+		<% if signed_in? %>
+			<%= render "pages/edit", locals: {page: @page} %>
+		<% else %>
+			<p>You need to be signed in to edit pages</p>
+		<% end %>
+	</div>
+</div>
+<script>
+   	$('#myTab a:first').tab('show') // Select first tab
+</script>
