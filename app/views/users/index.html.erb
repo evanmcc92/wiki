@@ -1,16 +1,26 @@
-<h1>All Users</h1>
-  <% @users.each do |user| %>
-	<h3><%= link_to user.username, user_path(user) %></h3>
-<ul>
-	<li>Admin: <%= user.admin ? 'Yes' : 'No' %></li>
-	<% if signed_in? && current_user.admin %>
-		<li>
-			<%= form_for(user) do |f| %>
-				<%= f.label "Make Admin:" %> <%= f.check_box :admin %>
-				<%= f.submit "Save Changes", class: "btn btn-xs btn-primary" %>
-			<% end %>
-		</li>
-	<% end %>
-	<li>pages made count</li>
+<ul class="nav nav-tabs" id="myTab">
+	<li><%= link_to "Users", "#trendshow", :data => {:toggle=>"tab"} %></li>
 </ul>
-<% end %>
+<div class="tab-content">
+	<div class="tab-pane" id="trendshow">
+		<h1>All Users</h1>
+		  <% @users.each do |user| %>
+			<h3><%= link_to user.username, user_path(user) %></h3>
+		<ul>
+			<li>Admin: <%= user.admin ? 'Yes' : 'No' %></li>
+			<% if signed_in? && current_user.admin %>
+				<li>
+					<%= form_for(user) do |f| %>
+						<%= f.label "Make Admin:" %> <%= f.check_box :admin %>
+						<%= f.submit "Save Changes", class: "btn btn-xs btn-primary" %>
+					<% end %>
+				</li>
+			<% end %>
+			<li>pages made count</li>
+		</ul>
+		<% end %>
+	</div>
+</div>
+<script>
+   $('#myTab a:first').tab('show') // Select first tab
+</script>

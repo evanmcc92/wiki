@@ -23,24 +23,24 @@
   <!-- end of trend form -->
 
   <div class="panel-group" id="accordion">
-  <% @trends.each do |trend| %>
-    <!-- start of panel 1 -->
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h4 class="panel-title">
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-              <%= trend.title %>
-            </a>
-          </h4>
-        </div>
-        <div id="collapseOne" class="panel-collapse collapse in">
-          <div class="panel-body">
-          List of a few pages
+    <% @trends.each do |trend| %>
+      <!-- start of panel 1 -->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                <%= trend.title %>
+              </a>
+            </h4>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse in">
+            <div class="panel-body">
+            List of a few pages
+            </div>
           </div>
         </div>
-      </div>
-    <!-- end of panel 1 -->
-  <% end %>
+      <!-- end of panel 1 -->
+    <% end %>
   </div>
 
 </div>

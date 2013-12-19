@@ -1,5 +1,8 @@
 class SessionsController < ApplicationController
   def new
+    @user = User.find_by(params[:id])
+    @trend = @user.trends.build
+    @trends = @user.trends
   end
 
   def create
