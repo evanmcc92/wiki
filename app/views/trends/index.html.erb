@@ -9,29 +9,35 @@
 			<h3><%= trend.title %></h3>
             <% if signed_in? %>
               	<% if current_user.admin %>
-                	<p><%= link_to "Delete", trend_path(trend), method: "delete", data: { confirm: "You sure?" }, :class=>"" %></p>
+                	<p><%= button_to "Delete", trend_path(trend), method: :delete, data: { confirm: "You sure?", class: "btn btn-large" } %></p>
               	<% end %>
             <% end %>
-			<ul>
-				<li>Page titles</li>
-			</ul>
+				<ul>
+            <% if trend.pages.any? %>
+					<li><%= link_to trend.pages, page_path(trend.pages) %></li>
+            <% else %>
+					<li>No pages yet</li>
+            <% end %>
+				</ul>
 		<% end %>
 	</div>
 	<div class="tab-pane" id="new">
 		<h1>Create a New Trend</h1>
-	<% if signed_in? %>
-	    <% if current_user.admin %>
-	    <div class="form-group">
-	      	<%= form_for(@trend) do |f| %>
-	        	<%= render "shared/error", object: f.object %>
-	        	<%= f.text_field :title, placeholder: "Compose new trend..." %>
-	        	<%= f.submit "Post", class: "btn btn-xs btn-primary" %>
-	      	<% end %>
-	    </div>
-	    <% end %>
-	<% else %>
-	    <p>You need to be signed in or an admin to make a new trend</p>
-	<% end %>
+		<% if signed_in? %>
+		    <% if current_user.admin %>
+			    <div class="form-group">
+			      	<%= form_for(@trend) do |f| %>
+			        	<%= render "shared/error", object: f.object %>
+			        	<%= f.text_field :title, placeholder: "Compose new trend..." %>
+			        	<%= f.submit "Post", class: "btn btn-xs btn-primary" %>
+			      	<% end %>
+			    </div>
+			<% else %>
+				<p>Sorry, but you are not logged in or not an admin.
+		    <% end %>
+		<% else %>
+		    <p>You need to be signed in or an admin to make a new trend</p>
+		<% end %>
 	</div>
 </div>
 <script>

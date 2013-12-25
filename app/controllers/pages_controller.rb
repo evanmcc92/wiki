@@ -13,12 +13,13 @@ class PagesController < ApplicationController
     end
     @user = User.find_by(params[:id])
     @trend = @user.trends.build
-    @trends = @user.trends
+    @trends = Trend.all
   end
 
   def destroy
+    @page = Page.find(params[:id])
     @page.destroy
-    redirect_to :back
+    redirect_to root_url
   end
 
   def edit
@@ -35,7 +36,7 @@ class PagesController < ApplicationController
     end
     @user = User.find_by(params[:id])
     @trend = @user.trends.build
-    @trends = @user.trends
+   @trends = Trend.all
   end
 
   def new
@@ -44,13 +45,15 @@ class PagesController < ApplicationController
 
     @user = User.find_by(params[:id])
     @trend = @user.trends.build
-    @trends = @user.trends
+    @trends = Trend.all
   end
 
   def show
-    @user = User.find(params[:id])
-    @page = Page.find(params[:id])
-    @trends = @user.trends
+    @user = User.find_by(params[:id])
+
+    @page = Page.find_by(params[:id])
+
+    @trends = Trend.all
     @trend = @user.trends.build
   end
 
@@ -59,7 +62,7 @@ class PagesController < ApplicationController
     @page = current_user.pages.build
     @user = User.find_by(params[:id])
     @trend = @user.trends.build
-    @trends = @user.trends
+    @trends = Trend.all
   end
 
   private

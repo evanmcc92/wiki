@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @trends = @user.trends
+    @trends = Trend.all
     @trend = @user.trends.build
   end
 
@@ -50,15 +50,14 @@ class UsersController < ApplicationController
     @users = User.all
     @user = User.find_by(params[:id])
     @trend = @user.trends.build
-    @trends = @user.trends
+    @trends = Trend.all
   end
 
   def new
     @user = User.new
 
     @users = User.find_by(params[:id])
-    @trend = @users.trends.build
-    @trends = @users.trends
+    @trends = Trend.all
   end
 
   private

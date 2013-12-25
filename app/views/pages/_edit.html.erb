@@ -7,13 +7,10 @@
     <%= f.text_field :summary %></p>
 
     <p><%= f.label :trend %><br />
-    <%= f.select(:trend_id, @trends) %></p>
+    <%= f.select(:trend, @trends) %></p>
 
     <p><%= f.label :body %><br />
     <%= f.text_area :body%></p>
 
     <p><%= f.submit "Save", class: "btn btn-large btn-primary" %></p>
-<% end %>
-<% if current_user.admin %>
-    <%= button_to 'Delete', page_path(@page), method: :delete, data: { confirm: 'Are you sure you want to delete the page?' }, class: "btn btn-large" %>
 <% end %>
