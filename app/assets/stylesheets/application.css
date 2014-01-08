@@ -33,9 +33,14 @@
 	float: right;
 	width: 74%;
 	margin-right: 5px;
+  margin-bottom: 70px;
 }
 #left {
 	float:left;
 	width: 24%;
 	margin-left: 5px;
+}
+textarea {
+  height:250px;
+  width: 500px;
 }
