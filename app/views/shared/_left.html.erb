@@ -1,9 +1,9 @@
 <div id="left">
 
   <!-- search -->
-  <%= form_tag(users_path, :method => 'get', :class => "search navbar-search") do %>
-    <%= text_field_tag :search, params[:search], :class => "input-small appendedInputButton", :placeholder => "Search" %>
-  <% end %>
+  <p><%= form_tag(pages_path, :method => 'get', :class => "search") do %>
+    <%= text_field_tag :search, params[:search], :placeholder => "Search" %>
+  <% end %></p>
   <!-- end of search -->
 
   <!-- trend form -->
