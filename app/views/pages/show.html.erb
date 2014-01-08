@@ -7,7 +7,7 @@
 		<h1><%= @page.title %></h1>	
 			<small>Created by: <%= @page.user.username %>, Last Updated: <%= @page.updated_at.strftime('%m/%d/%Y ') %></small>
 		<blockquote><i><%= @page.summary %></i></blockquote>
-		<p><%= @page.body %></p>
+		<p><%= @page.body.html_safe %></p>
 	</div>
 	<div class="tab-pane" id="updatepage">
 		<h1>Update Page</h1>
