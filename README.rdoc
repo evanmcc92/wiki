@@ -1,6 +1,5 @@
 == Wiki
 
-====Business Rules
 
 * Users
   * A user can create a page and edit a page. 
