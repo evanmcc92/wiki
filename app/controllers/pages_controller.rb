@@ -65,6 +65,14 @@ class PagesController < ApplicationController
     @trends = Trend.all
   end
 
+  def search
+    if params[:search]
+      @page = Page.search(params[:search]).order("created_at DESC")
+    else
+      @page = Page.all.order('created_at DESC')
+    end
+  end
+
   private
 
     def page_params

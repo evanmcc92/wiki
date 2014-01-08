@@ -1,0 +1,21 @@
+<ul class="nav nav-tabs" id="myTab">
+	<li><%= link_to "Page", "#page", :data => {:toggle=>"tab"} %></li>
+	<li><%= link_to "Update Page", "#updatepage", :data => {:toggle=>"tab"} %></li>
+</ul>
+<div class="tab-content">
+	<div class="tab-pane" id="page">
+		<h1>Search results for "<%= params[:search] %>"</h1>
+		<% if @pages.any?%>
+			<% for page in @page %>
+	    		<p>
+		    		<%= link_to page.user_name, page_path(page) %><br />
+	    		</p>
+	    	<% end %>
+		<% else %>
+			<p>Sorry! No results, try again.</p>
+    	<% end %>
+	</div>
+</div>
+<script>
+   	$('#myTab a:first').tab('show') // Select first tab
+</script>
