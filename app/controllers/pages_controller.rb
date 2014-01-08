@@ -51,7 +51,7 @@ class PagesController < ApplicationController
   def show
     @user = User.find_by(params[:id])
 
-    @page = Page.find_by(params[:id])
+    @page = Page.find(params[:id])
 
     @trends = Trend.all
     @trend = @user.trends.build

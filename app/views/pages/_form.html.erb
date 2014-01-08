@@ -7,10 +7,20 @@
     <%= f.text_field :summary %></p>
 
     <p><%= f.label :trend %><br />
-    <%= f.select(:trend_id, @trends) %></p>
+    <%= f.collection_select :trend_id, Trend.all, :id, :title %></p>
 
     <p><%= f.label :body %><br />
-    <%= f.text_area :body %></p>
+    <%= f.text_area :body, class: 'wysihtml5' %></p>
 
-    <p><%= f.submit "Create my account", class: "btn btn-large btn-primary" %></p>
+    <p><%= f.submit "Create the page", class: "btn btn-large btn-primary" %></p>
 <% end %>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+
+    $('.wysihtml5').each(function(i, elem) {
+      $(elem).wysihtml5();
+    });
+
+  })
+</script>
