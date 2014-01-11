@@ -13,7 +13,6 @@ class PagesController < ApplicationController
       render 'index'
     end
 
-    @user = User.find_by(params[:id])
     @trends = Trend.all
   end
 
