@@ -61,16 +61,17 @@ class PagesController < ApplicationController
 
   def index
   	@pages =Page.all
-    @user = User.find(params[:id])
-    @trend = @user.trends.build
+    @user = User.find_by(params[:id])
+    if @user
+      @trend = @user.trends.build
+    end
     @trends = Trend.all
-  end
 
-  def search
+
     if params[:search]
-      @page = Page.search(params[:search]).order("created_at DESC")
+      @page = Page.search(params[:search])
     else
-      @page = Page.all.order('created_at DESC')
+      @page = Page.all
     end
   end
 

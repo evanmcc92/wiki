@@ -3,11 +3,14 @@
 </ul>
 <div class="tab-content">
 	<div class="tab-pane" id="pageall">
-		<h1>All Pages</h1>
-		  <% @pages.each do |page| %>
-		<ul>
-			<li><%= link_to page.title, page_path(page) %></li>
-		</ul>
+		<h1>Search results for "<%= params[:search] %>"</h1>
+		<% if @page %>
+			<% for page in @page %>
+				<ul>
+					<li><%= link_to page.title, page_path(page) %><br/>
+						<small><i><%= page.summary %></i></small></li></li>
+				</ul>
+			<% end %>
 		<% end %>
 	</div>
 </div>

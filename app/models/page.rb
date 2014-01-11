@@ -14,6 +14,6 @@ class Page < ActiveRecord::Base
 
   #search
 	def self.search(query)
-	    where("title like ?", "%#{query}%")
+      where("title like ?", "%#{query}%")
 	end
 end
