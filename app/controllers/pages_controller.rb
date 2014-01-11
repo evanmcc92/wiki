@@ -49,7 +49,6 @@ class PagesController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
 
     @page = Page.find(params[:id])
 
