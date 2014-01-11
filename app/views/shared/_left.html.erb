@@ -1,11 +1,9 @@
 <div id="left">
 
   <!-- search -->
-  <form class="search" role="search">
-    <div class="form-group">
-      <input type="text" class="form-control" placeholder="Search">
-    </div>
-  </form>
+  <p><%= form_tag(pages_path, :method => 'get', :class => "search") do %>
+    <%= text_field_tag :search, params[:search], :placeholder => "Search" %>
+  <% end %></p>
   <!-- end of search -->
 
   <!-- trend form -->
@@ -21,7 +19,6 @@
     <% end %>
   <% end %>
   <!-- end of trend form -->
-
   <div class="panel-group" id="accordion">
     <% @trends.each do |trend| %>
       <!-- start of panel 1 -->
@@ -35,7 +32,13 @@
           </div>
           <div id="collapseOne" class="panel-collapse collapse in">
             <div class="panel-body">
-            List of a few pages
+            <% if trend.pages.any? %>
+              <% trend.pages.each do |page| %>
+                  <p><%= link_to page.title, page_path(page) %></p>
+              <%end%>
+            <%else%>
+              <p>No pages made</p>
+            <%end%>
             </div>
           </div>
         </div>

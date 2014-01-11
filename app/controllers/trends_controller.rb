@@ -12,15 +12,17 @@ class TrendsController < ApplicationController
   end
 
   def destroy
+    @trend = Trend.find_by(params[:id])
     @trend.destroy
-    redirect_to :back
+    redirect_to root_url
   end
 
-  def index
-    Trend.all
+  def index    
     @user = User.find_by(params[:id])
-    @trend = @user.trends.build
-    @trends = @user.trends
+    if @user
+      @trend = @user.trends.build
+    end
+    @trends = Trend.all
   end
 
   private

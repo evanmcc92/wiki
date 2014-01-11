@@ -4,20 +4,16 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @trends = @user.trends
+    @trends = Trend.all
     @trend = @user.trends.build
   end
 
   def create
     @user = User.new(user_params)
-      if @user.id == 1
-        @user.admin = true
-      else
-        @user.admin = false
-      end
+
+    @user.admin = false
 
     if @user.save
-
       sign_in @user
       flash[:success] = "Welcome to Wiki!"
       redirect_to @user
@@ -49,16 +45,17 @@ class UsersController < ApplicationController
   def index
     @users = User.all
     @user = User.find_by(params[:id])
-    @trend = @user.trends.build
-    @trends = @user.trends
+    if @user
+      @trend = @user.trends.build
+    end
+    @trends = Trend.all
   end
 
   def new
     @user = User.new
 
     @users = User.find_by(params[:id])
-    @trend = @users.trends.build
-    @trends = @users.trends
+    @trends = Trend.all
   end
 
   private

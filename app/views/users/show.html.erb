@@ -6,10 +6,7 @@
 	<div class="tab-pane" id="usershow">
 		<h1><%= @user.username %></h1>
 		<p>Admin: <%= @user.admin ? 'Yes' : 'No' %></p>
-		<p>Pages Made</p>
-		<ul id="pagesmade">
-			<li>Page name with url</li>
-		</ul>
+		<p>Pages Count: <%= @user.pages.count %></p>
 	</div>
 	<div class="tab-pane" id="edit">
 			<h1>Update Your Profile</h1>
