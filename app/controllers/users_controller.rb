@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   before_action :signed_in_user, only: [:edit, :update]
-  before_action :admin_user, only: [:edit, :update]
 
   def show
     @user = User.find(params[:id])
@@ -36,7 +35,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
       flash[:success] = "Profile updated"
-      redirect_to @user
+      redirect_to :back
     else
       render 'edit'
     end
@@ -53,7 +52,6 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-
     @users = User.find_by(params[:id])
     @trends = Trend.all
   end
