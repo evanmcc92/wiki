@@ -52,7 +52,7 @@ class PagesController < ApplicationController
 
     @page = Page.find(params[:id])
 
-    @user = User.find_by(params[:id])
+    @user = current_user
     if @user
       @trend = @user.trends.build
     end

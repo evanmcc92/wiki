@@ -5,7 +5,7 @@
 <div class="tab-content">
 	<div class="tab-pane" id="page">
 		<h1><%= @page.title %></h1>	
-			<small>Created by: <%= @page.user.username %>, Last Updated: <%= @page.updated_at.strftime('%m/%d/%Y ') %></small>
+			<small>Created by: <%= link_to @page.user.username, user_path(@page.user) %>, Last Updated: <%= @page.updated_at.strftime('%m/%d/%Y ') %></small>
 		<blockquote><i><%= @page.summary %></i></blockquote>
 		<p><%= @page.body.html_safe %></p>
 	</div>
