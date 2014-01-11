@@ -59,7 +59,6 @@ class PagesController < ApplicationController
 
   def index
   	@pages =Page.all
-    @page = current_user.pages.build
     @user = User.find_by(params[:id])
     @trend = @user.trends.build
     @trends = Trend.all
