@@ -2,16 +2,17 @@ class PagesController < ApplicationController
   before_action :signed_in_user, only: [:create, :destroy]
 
   def create
-  	@trend = Trend.find_by(params[:id])
+  	@trend = Trend.find(params[:id])
     @page = @trend.pages.build(page_params)
     @page.user_id = current_user.id
+
     if @page.save
       flash[:success] = "Page created!"
       redirect_to @page
     else
       render 'index'
     end
-    @user = User.find_by(params[:id])
+    @user = User.find(params[:id])
     @trend = @user.trends.build
     @trends = Trend.all
   end
