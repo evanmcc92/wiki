@@ -1,5 +1,6 @@
-== Wiki
+= Wiki
 
+===How things work
 
 * Users
   * A user can create a page and edit a page. 
@@ -15,3 +16,9 @@
 * Trends
   * A trend can have many pages.
   * A trend belongs to one admin user but many users can contribute to the trend.
+
+===Other Information
+
+A demo of wiki is located here: http://evan-wiki.herokuapp.com
+
+Fonts, formats, etc can be per for your business needs.
