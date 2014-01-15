@@ -36,7 +36,7 @@ class PagesController < ApplicationController
     end
     @user = User.find_by(params[:id])
     @trend = @user.trends.build
-   @trends = Trend.all
+    @trends = Trend.all
   end
 
   def new
