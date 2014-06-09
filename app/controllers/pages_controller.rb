@@ -3,8 +3,8 @@ class PagesController < ApplicationController
 
   def create
   	@trend = Trend.find_by(params[:id])
-    @page = @trend.pages.build(page_params)
-    @page.user_id = current_user.id
+    @page = current_user.pages.build(page_params)
+    @page.trend_id = @trend.id
 
     if @page.save
       flash[:success] = "Page created!"
