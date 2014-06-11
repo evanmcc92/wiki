@@ -32,8 +32,10 @@ class PagesController < ApplicationController
     else
       render 'edit'
     end
-    @user = User.find(params[:id])
-    @trend = @user.trends.build
+    @user = User.find_by(params[:id])
+    if current_user
+      @trend = @user.trends.build
+    end
     @trends = Trend.all
   end
 
@@ -51,9 +53,11 @@ class PagesController < ApplicationController
     @page = Page.find(params[:id])
 
     @user = current_user
+
     if @user
       @trend = @user.trends.build
     end
+
     @trends = Trend.all
   end
 
