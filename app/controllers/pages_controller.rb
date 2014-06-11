@@ -26,13 +26,16 @@ class PagesController < ApplicationController
 
   def update
     @page = Page.find(params[:id])
+
     if @page.update_attributes(page_params)
-      flash[:success] = "Profile updated"
-      redirect_to @page
+      flash[:success] = "Page updated"
+      redirect_to :back
     else
       render 'edit'
+      flash[:error] = "Page was not updated"
     end
-    @user = User.find_by(params[:id])
+
+    @user = User.find(params[:id])
     if current_user
       @trend = @user.trends.build
     end
