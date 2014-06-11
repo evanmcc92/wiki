@@ -12,7 +12,7 @@
 	<div class="tab-pane" id="updatepage">
 		<h1>Update Page</h1>
 		<% if signed_in? %>
-			<%= render "pages/edit", locals: {page: @page} %>
+			<%= render "pages/form", locals: {page: @page} %>
 			<% if current_user.admin %>
 			    <%= button_to 'Delete', page_path(@page), method: :delete, data: { confirm: 'Are you sure you want to delete the page?' }, class: "btn btn-large" %>
 			<% end %>

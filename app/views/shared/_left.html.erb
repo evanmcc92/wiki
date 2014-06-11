@@ -9,16 +9,7 @@
   <!-- trend form -->
   <% if signed_in? %>
     <% if current_user.admin %>
-    <div class="form-group">
-      <%= form_for(@trend) do |f| %>
-    <div class="input-group">
-        <%= render "shared/error", object: f.object %>
-        <%= f.text_field :title, class: "form-control", placeholder: "Compose new trend..." %>
-        
-      <span class="input-group-btn"><%= f.submit "Post", class: "btn btn-primary" %></span>
-        </div>
-      <% end %>
-      </div>
+    <%= render "trends/trend_form" %>
     <% end %>
   <% end %>
   <!-- end of trend form -->

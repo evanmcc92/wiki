@@ -1,4 +1,23 @@
-<%= form_for(@trend) do |f| %>
-  <%= f.text_area :title, placeholder: "Compose new trend..." %>
-  <%= f.submit "Post", class: "btn btn-large btn-primary" %>
-<% end %>
+<div class="form-group">
+	<%= form_for(@trend) do |f| %>
+        <%= render "shared/error", object: f.object %>
+		<div class="input-group">
+			<%= f.text_field :title, class: "form-control", id:"messagetrend", placeholder: "Compose new trend..." %>
+			<span class="input-group-btn"><%= f.submit "Post", class: "btn btn-primary" %></span>
+		</div>
+		<p>You have <B><SPAN id="countdowntrend">100</SPAN></B> characters remaining.</p>
+	<% end %>
+</div>
+<script>
+function updateCountdown() {
+    // 140 is the max message length
+    var remaining = 100 - jQuery('#messagetrend').val().length;
+    jQuery('#countdowntrend').text(remaining);
+}
+
+$(document).ready(function($) {
+    updateCountdown();
+    $('#messagetrend').change(updateCountdown);
+    $('#messagetrend').keyup(updateCountdown);
+});
+</script>
