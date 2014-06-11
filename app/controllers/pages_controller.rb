@@ -35,9 +35,8 @@ class PagesController < ApplicationController
       flash[:error] = "Page was not updated"
     end
 
-    @user = User.find(params[:id])
     if current_user
-      @trend = @user.trends.build
+      @trend = current_user.trends.build
     end
     @trends = Trend.all
   end
