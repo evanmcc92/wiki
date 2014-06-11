@@ -13,8 +13,10 @@ class TrendsController < ApplicationController
 
   def destroy
     @trend = Trend.find(params[:id])
-    @trend.destroy
-    redirect_to root_url
+    if @trend.destroy
+      redirect_to root_url
+      flash[:success] = "Trend was successfully deleted!"
+    end
   end
 
   def index    

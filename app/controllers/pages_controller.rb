@@ -16,8 +16,11 @@ class PagesController < ApplicationController
 
   def destroy
     @page = Page.find(params[:id])
-    @page.destroy
-    redirect_to root_url
+
+    if @page.destroy
+      redirect_to root_url
+      flash[:success] = "Page was successfully deleted"
+    end
   end
 
   def edit
@@ -38,6 +41,7 @@ class PagesController < ApplicationController
     if current_user
       @trend = current_user.trends.build
     end
+
     @trends = Trend.all
   end
 
