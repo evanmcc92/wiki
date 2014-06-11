@@ -9,7 +9,7 @@ class Page < ActiveRecord::Base
   validates :trend_id, presence: true
   validates :title, presence: true, length: { maximum: 100 }
   validates :summary, presence: true, length: { maximum: 255 }
-  validates :body, presence: true, length: { maximum: 2000 }
+  validates :body, presence: true
 
   #search
 	def self.search(query)

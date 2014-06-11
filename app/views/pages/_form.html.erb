@@ -1,10 +1,12 @@
 <%= form_for(@page) do |f| %>
 	<%= render "shared/error", object: f.object %>
     <p><%= f.label :title %><br />
-    <%= f.text_field :title, class: "form-control" %></p>
+    <%= f.text_field :title, class: "form-control", id:"message1" %></p>
+    <p>You have <B><SPAN id="countdown1">100</SPAN></B> characters remaining.</p>
 
     <p><%= f.label :summary %><br />
-    <%= f.text_field :summary, class: "form-control" %></p>
+    <%= f.text_field :summary, class: "form-control", id:"message2" %></p>
+    <p>You have <B><SPAN id="countdown2">255</SPAN></B> characters remaining.</p>
 
     <p><%= f.label :trend %><br />
     <%= f.collection_select :trend_id, Trend.all, :id, :title %></p>
@@ -23,4 +25,29 @@
       });
 
   })
+
+
+function updateCountdown() {
+    // 140 is the max message length
+    var remaining = 100 - jQuery('#message1').val().length;
+    jQuery('#countdown1').text(remaining);
+}
+
+$(document).ready(function($) {
+    updateCountdown();
+    $('#message1').change(updateCountdown);
+    $('#message1').keyup(updateCountdown);
+});
+
+function updateCountdown2() {
+    // 140 is the max message length
+    var remaining = 255 - jQuery('#message2').val().length;
+    jQuery('#countdown2').text(remaining);
+}
+
+$(document).ready(function($) {
+    updateCountdown2();
+    $('#message2').change(updateCountdown2);
+    $('#message2').keyup(updateCountdown2);
+});
 </script>
