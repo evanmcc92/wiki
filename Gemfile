@@ -29,4 +29,4 @@ gem 'protected_attributes'
 
 gem 'newrelic_rpm'
 
-gem 'bootstrap-wysihtml5-rails'
+gem 'bootstrap-wysihtml5-rails', '~> 0.3.2.99'
