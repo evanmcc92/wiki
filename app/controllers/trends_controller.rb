@@ -12,7 +12,7 @@ class TrendsController < ApplicationController
   end
 
   def destroy
-    @trend = Trend.find_by(params[:id])
+    @trend = Trend.find(params[:id])
     @trend.destroy
     redirect_to root_url
   end
